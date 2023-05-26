@@ -38,14 +38,9 @@ app.use("/api/v1/video5", video5Routes);
 
 app.use("/public", express.static(path.join(__dirname, "public")));
 
+// const mongodbUri = "mongodb+srv://nggiang141:Agera141@cluster0.jtm6pn2.mongodb.net/uploadproject";
 
-
-
-const mongodbUri = "mongodb+srv://nggiang141:Agera141@cluster0.jtm6pn2.mongodb.net/uploadproject";
-
-mongoose.connect(mongodbUri, {
-  useNewUrlParser: true,
-});
+mongoose.connect('mongodb+srv://nggiang141:Agera141@cluster0.jtm6pn2.mongodb.net/uploadproject')
 
 mongoose.connection.on("connected", () => {
   console.log("Connected to mongodb...");
@@ -54,6 +49,10 @@ mongoose.connection.on("connected", () => {
 mongoose.connection.on("error", (err) => {
   console.log("Error connecting to mongo", err);
 });
+
+app.get('/', (req, res) => {
+  res.send('Home router')
+})
 
 app.listen(4000, () => {
   console.log("App is running on PORT 4000");
