@@ -59,4 +59,4 @@ app.listen(4000, () => {
   console.log("App is running on PORT 4000");
 });
 
-// module.exports = app;
+module.exports = app;
